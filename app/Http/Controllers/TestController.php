@@ -9,11 +9,11 @@ class TestController extends Controller
 {
     public function login() {
         $auth = app('firebase.auth');
-        $idTokenString = 'Z1TSFEew05NoTUFSdl7bLUN15Fm2';
-        $verifiedIdToken = $auth->verifyIdToken($idTokenString);
 
-        $uid = $verifiedIdToken->claims()->get('sub');
-
-        $user = $auth->getUser($uid);
+        try {
+            $user = $auth->getUser('Z1TSFEew05NoTUFSdl7bLUN15Fm2');
+        } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+            echo $e->getMessage();
+        }
     }
 }
