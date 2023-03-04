@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the phone record associated with the user.
+     * Get the access token record associated with the user.
      */
     public function user_access()
     {
